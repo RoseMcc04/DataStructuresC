@@ -70,7 +70,7 @@ Node *userInputNode()
     scanf("%lf", &n->datum2);
     printf("What Character/Symbol would you like for this Node to hold? \n");
     scanf(" %c", &n->datum3);
-    n->name = (char *) malloc(100 * sizeof(char));  // Allocating memory for name
+    n->name = (char *) malloc(100 * sizeof(char));
     if (n->name == NULL) 
     {
         free(n);  // Free previously allocated memory for the node

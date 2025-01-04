@@ -119,7 +119,7 @@ void *setDatum2(Node *n, double datum2);
 double getDatum2(Node *n);
 
 /**
- * 
+ * @brief This 
  */
 void *setDatum3(Node *n, char datum3);
 
