@@ -24,7 +24,7 @@ Node *emptyNode()
     n->name = (char *) malloc(100 * sizeof(char));
     if (n->name == NULL) 
     {
-        free(n->name);
+        free(n);
         return NULL;
     }
     strcpy(n->name, "");
@@ -38,7 +38,6 @@ Node *newNode(int datum1, double datum2, char datum3, char *name, Node *prev, No
     Node *n = (Node *) malloc(sizeof(Node));
     if (n == NULL) 
     {
-        free(n);
         return NULL;
     }
     n->datum1 = datum1;
@@ -47,7 +46,7 @@ Node *newNode(int datum1, double datum2, char datum3, char *name, Node *prev, No
     n->name = (char *) malloc(100 * sizeof(char));
     if (n->name = NULL) 
     {
-        free(n->name);
+        free(n);
         return NULL;
     }
     strcpy(n->name, name);
@@ -77,16 +76,16 @@ Node *userInputNode()
         return NULL; // Return NULL if memory allocation fails
     }
     printf("What name would you like for this Node to hold? \n");
-    scanf("%s", n->name);
+    scanf("%99s", n->name);
     n->prev = NULL;
     n->next = NULL;
+    return n;
 }
 
 void freeNode(Node *n) 
 {
     if (n == NULL) 
     {
-        free(n);
         return;
     }
     free(n->name);
@@ -125,7 +124,12 @@ char getDatum3(Node *n)
 
 void *setName(Node *n, char *name) 
 {
-    n->name = name;
+    free(n->name);
+    n->name = (char *) malloc(strlen(name) + 1);
+    if (n->name != NULL) 
+    {
+        strcpy(n->name, name);
+    }
 }
 
 char *getName(Node *n) 
@@ -157,7 +161,7 @@ void printNode(Node *n)
 {
     if (n == NULL) 
     {
-        free(n);
+        printf("%p is completely NULL.\n", n);
         return;
     }
     printf("Datum 1: %d\n", n->datum1);

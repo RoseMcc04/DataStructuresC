@@ -18,51 +18,79 @@ int main(int argc, char *argv[])
 DoublyLinkedList *emptyList() 
 {
     DoublyLinkedList *l = (DoublyLinkedList *) malloc(sizeof(DoublyLinkedList));
-    l->head = (Node *) malloc(sizeof(Node));
-    l->tail = (Node *) malloc(sizeof(Node));
+    l->head = NULL;
+    l->tail = NULL;
     l->length = 0;
     return l;
 }
 
-DoublyLinkedList *newDoublyLinkedList(Node *head, Node *tail, int length) 
+DoublyLinkedList *newDoublyLinkedList(int length) 
 {
     DoublyLinkedList *l = (DoublyLinkedList *) malloc(sizeof(DoublyLinkedList));
     l->head = (Node *) malloc(sizeof(Node));
-    l->head = userInputNode();
     l->tail = (Node *) malloc(sizeof(Node));
-    l->tail = userInputNode();
-    setNext(l->head, l->tail);
-    setPrev(l->tail, l->head);
     Node *cursor = l->head;
+    int count = 0;
     while (getNext(cursor) != NULL) 
     {
-        getNext(cursor);
+        count++;
+        if ()
+        cursor = userInputNode();
+        cursor = getNext(cursor);
     }
 }
 
 void *addToHead(DoublyLinkedList *l, Node *n) 
 {
-
+    setPrev(l->head, n);
+    l->head = n;
+    l->length++;
 }
 
 void *addToTail(DoublyLinkedList *l, Node *n) 
 {
-
+    setNext(l->tail, n);
+    l->tail = n;
+    l->length++;
 }
 
 void *setHead(DoublyLinkedList *l, Node *n) 
 {
-
+    if (l == NULL) 
+    {
+        printf("Cannot add a head on a NULL Doubly Linked List.\n");
+        return;
+    }
+    if (n == NULL) 
+    {
+        l->head = emptyNode();
+        return;
+    }
+    l->head = n;
 }
 
 Node *getHead(DoublyLinkedList *l) 
 {
+    if (l == NULL) 
+    {
+        printf("Cannot retrieve a head on a NULL Doubly Linked List.\n");
+        return;
+    }
     return l->head;
 }
 
 void *setTail(DoublyLinkedList *l, Node *n) 
 {
-
+    if (l == NULL) 
+    {
+        printf("Cannot set a tail on a NULL Doubly Linked List.\n");
+    }
+    if (n == NULL) 
+    {
+        l->tail = emptyNode();
+        return;
+    }
+    l->tail = n;
 }
 
 Node *getTail(DoublyLinkedList *l) 
@@ -90,27 +118,23 @@ void *printList(DoublyLinkedList *l)
     if (l == NULL) 
     {
         printf("NULL\n");
+        return;
     }
     Node *cursor = l->head;
     printf("<{");
     while (cursor != NULL) 
     {
-        if (getPrev(cursor) == NULL) 
-        {
-            printf("Datum1: %d, Datum2: %.2lf, Datum3:  %c, Name: %s}, \n", 
+        printf("Datum1: %d, Datum2: %.2lf, Datum3:  %c, Name: %s}, \n", 
                 cursor->datum1, cursor->datum2, cursor->datum3, cursor->name);
-        }
-        else if (getNext(cursor) == NULL) 
+        if (getNext(cursor) != NULL) 
         {
-            printf("{Datum1: %d, Datum2: %.2lf, Datum3:  %c, Name: %s", 
-                cursor->datum1, cursor->datum2, cursor->datum3, cursor->name);
+            printf("}, \n");
         }
         else 
         {
-            printf("{Datum 1: %d, Datum 2: %.2lf, Datum 3:  %c, Name: %s}, \n", 
-                cursor->datum1, cursor->datum2, cursor->datum3, cursor->name);
+            printf("}");
         }
-        setNext(cursor, getNext(cursor));
+        cursor = getNext(cursor);
     }
     printf("}>\n");
 }
@@ -120,22 +144,25 @@ void *freeList(DoublyLinkedList *l)
     if (l == NULL) 
     {
         printf("There is nothing to free.\n");
+        return;
     }
     if (l->length == 0) 
     {
         free(l);
+        return;
     }
     if (l->length == 1) 
     {
-        free(getHead(l->head));
+        free(getHead(l));
         free(l);
+        return;
     }
-    if (getLength(l) > 1) 
+    Node *cursor = getHead(l);
+    while (cursor != NULL) 
     {
-        Node *cursor = getHead(l);
-        while (getNext(cursor) != NULL) 
-        {
-            setNext(cursor, getNext(cursor));
-        }
+        Node *temp = cursor;
+        cursor = getNext(cursor);
+        freeNode(temp);
     }
+    free(l);
 }

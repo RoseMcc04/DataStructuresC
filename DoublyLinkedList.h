@@ -31,13 +31,11 @@ DoublyLinkedList *emptyList();
 /**
  * @brief This function will create an empty Doubly Linked List structure.
  * 
- * @param head The head of the Doubly Linked List.
- * 
- * @param tail The tail of the Doubly Linked List.
- * 
  * @param length The length of the Doubly Linked List.
+ * 
+ * @return Returns a new usable Doubly Linked List with user input at the specified length.
  */
-DoublyLinkedList *newDoublyLinkedList(Node *head, Node *tail, int length);
+DoublyLinkedList *newDoublyLinkedList(int length);
 
 /**
  * @brief This function will add a head Node to the current Doubly Linked List.
@@ -56,20 +54,6 @@ void *addToHead(DoublyLinkedList *l, Node *n);
  * @param n The Node we are adding onto the tail of the Doubly Linked List.
  */
 void *addToTail(DoublyLinkedList *l, Node *n);
-
-/**
- * @brief This function will add a head Node to the current Doubly Linked List.
- * 
- * @param l The Doubly Linked List being used for the operation.
- * 
- * @param n The Node being added to the tail of the Doubly Linked List.
- */
-void *addBefore(DoublyLinkedList *l, Node *n);
-
-/**
- * 
- */
-Node *addAfter(DoublyLinkedList *l, Node *n1, Node *n2);
 
 /**
  * @brief This function sets the head of the Doubly Linked List.
