@@ -21,7 +21,7 @@ DoublyLinkedList *emptyList()
     l->head = NULL;
     l->tail = NULL;
     l->length = 0;
-    return l;
+    return(l);
 }
 
 DoublyLinkedList *newDoublyLinkedList(int length) 
@@ -76,7 +76,7 @@ Node *getHead(DoublyLinkedList *l)
         printf("Cannot retrieve a head on a NULL Doubly Linked List.\n");
         return;
     }
-    return l->head;
+    return(l->head);
 }
 
 void *setTail(DoublyLinkedList *l, Node *n) 
@@ -95,7 +95,7 @@ void *setTail(DoublyLinkedList *l, Node *n)
 
 Node *getTail(DoublyLinkedList *l) 
 {
-    return l->tail;
+    return(l->tail);
 }
 
 int getLength(DoublyLinkedList *l) 
@@ -110,7 +110,7 @@ int getLength(DoublyLinkedList *l)
         printf("Length was not appropriate.\n");
         return -1;
     }
-    return l->length;
+    return(l->length);
 }
 
 void *printList(DoublyLinkedList *l) 
@@ -125,7 +125,7 @@ void *printList(DoublyLinkedList *l)
     while (cursor != NULL) 
     {
         printf("Datum1: %d, Datum2: %.2lf, Datum3:  %c, Name: %s}, \n", 
-                cursor->datum1, cursor->datum2, cursor->datum3, cursor->name);
+                getDatum1(cursor), getDatum2(cursor), getDatum3(cursor), getName(cursor));
         if (getNext(cursor) != NULL) 
         {
             printf("}, \n");

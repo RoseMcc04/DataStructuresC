@@ -30,7 +30,7 @@ Node *emptyNode()
     strcpy(n->name, "");
     n->prev = NULL;
     n->next = NULL;
-    return n;
+    return(n);
 }
 
 Node *newNode(int datum1, double datum2, char datum3, char *name, Node *prev, Node *next)
@@ -38,7 +38,7 @@ Node *newNode(int datum1, double datum2, char datum3, char *name, Node *prev, No
     Node *n = (Node *) malloc(sizeof(Node));
     if (n == NULL) 
     {
-        return NULL;
+        return(NULL);
     }
     n->datum1 = datum1;
     n->datum2 = datum2;
@@ -47,12 +47,12 @@ Node *newNode(int datum1, double datum2, char datum3, char *name, Node *prev, No
     if (n->name = NULL) 
     {
         free(n);
-        return NULL;
+        return(NULL);
     }
     strcpy(n->name, name);
     n->prev = prev;
     n->next = next;
-    return n;
+    return(n);
 }
 
 Node *userInputNode() 
@@ -61,7 +61,7 @@ Node *userInputNode()
     if (n == NULL) 
     {
         free(n);
-        return NULL;
+        return(NULL);
     }
     printf("What Integer would you like for this Node to hold? \n");
     scanf("%d", &n->datum1);
@@ -73,13 +73,13 @@ Node *userInputNode()
     if (n->name == NULL) 
     {
         free(n);  // Free previously allocated memory for the node
-        return NULL; // Return NULL if memory allocation fails
+        return(NULL); // Return NULL if memory allocation fails
     }
     printf("What name would you like for this Node to hold? \n");
     scanf("%99s", n->name);
     n->prev = NULL;
     n->next = NULL;
-    return n;
+    return(n);
 }
 
 void freeNode(Node *n) 
@@ -99,7 +99,7 @@ void *setDatum1(Node *n, int datum1)
 
 int getDatum1(Node *n) 
 {
-    return n->datum1;
+    return(n->datum1);
 }
 
 void *setDatum2(Node *n, double datum2) 
@@ -109,7 +109,7 @@ void *setDatum2(Node *n, double datum2)
 
 double getDatum2(Node *n) 
 {
-    return n->datum2;
+    return(n->datum2);
 }
 
 void *setDatum3(Node *n, char datum3) 
@@ -119,7 +119,7 @@ void *setDatum3(Node *n, char datum3)
 
 char getDatum3(Node *n) 
 {
-    return n->datum3;
+    return(n->datum3);
 }
 
 void *setName(Node *n, char *name) 
@@ -134,7 +134,7 @@ void *setName(Node *n, char *name)
 
 char *getName(Node *n) 
 {
-    return n->name;
+    return(n->name);
 }
 
 void *setPrev(Node *n1, Node *n2) 
@@ -144,7 +144,7 @@ void *setPrev(Node *n1, Node *n2)
 
 Node *getPrev(Node *n) 
 {
-    return n->prev;
+    return(n->prev);
 }
 
 void *setNext(Node *n1, Node *n2) 
@@ -154,7 +154,7 @@ void *setNext(Node *n1, Node *n2)
 
 Node *getNext(Node *n) 
 {
-    return n->next;
+    return(n->next);
 }
 
 void printNode(Node *n) 

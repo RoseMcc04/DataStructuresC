@@ -114,27 +114,43 @@ void *setDatum2(Node *n, double datum2);
  * 
  * @param n The Node that the user wants to return the data on.
  * 
- * @return Returns the Decimal/Double Data of the Node.
+ * @return Returns the Decimal/Double data of the Node.
  */
 double getDatum2(Node *n);
 
 /**
- * @brief This 
+ * @brief This function sets the Character data for the Node.
+ * 
+ * @param n The Node that will hold the new Character data.
+ * 
+ * @param datum3 The Character data the user wants the Node to hold.
  */
 void *setDatum3(Node *n, char datum3);
 
 /**
+ * @brief This function returns the Character data for the Node.
  * 
+ * @param n The Node that the user wants to return the data on.
+ * 
+ * @return Returns the Character data of the Node
  */
 char getDatum3(Node *n);
 
 /**
+ * @brief This function sets the name data for the Node.
  * 
+ * @param n The Node that will hold the new name.
+ * 
+ * @param name The name data the user wants the Node to hold.
  */
 void *setName(Node *n, char *name);
 
 /**
+ * @brief This function returns the name data for the Node.
  * 
+ * @param n The Node that the user wants to return the data on.
+ * 
+ * @return Returns the name data of the Node.
  */
 char *getName(Node *n);
 

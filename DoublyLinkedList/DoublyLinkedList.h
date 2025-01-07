@@ -3,7 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Node.h"
+#include <string.h>
+#include "../Node.h"
 
 /**
  * @brief This struct will hold all of the Nodes of a Linked List.
@@ -66,6 +67,8 @@ void *setHead(DoublyLinkedList *l, Node *n);
 
 /**
  * @brief This function returns the head of the Doubly Linked List.
+ * 
+ * @param l The Doubly Linked List being used for the operation.
  * 
  * @return Returns the head Node of the Doubly Linked List.
  */
